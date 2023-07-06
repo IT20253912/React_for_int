@@ -1,29 +1,20 @@
+import "./App.css";
+import Main from "./Components/Main";
 
-import './App.css';
-import Main from './Components/Main';
+import myData from "./Data/myData";
 
-const name = "name test";
-const position = "position test";
+const Mainblock = myData.map(({name , city , position, id}) => {
+  return <Main key={id} name={name} city={city} position={position}/>;
+});
 
-const myObj = {
-  name:`${name}`,
-  position:`${position}`
-}
+
 function App() {
+  console.log(myData);
 
   return (
-    <>
     <div>
-        chathudu
-        <Main />
-        <Main />
-        <Main>
-          <p>{name}</p>
-          <p>{myObj.position}</p>
-        </Main>
-        <Main name="saman" position="SE" city="colombo"/>
+      {Mainblock}
     </div>
-    </>
   );
 }
 

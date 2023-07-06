@@ -1,5 +1,5 @@
 function Main({name , position , city}){
-    console.log(city);
+    // console.log(city);
     return(
         <div>
             Hello World! 
@@ -8,7 +8,6 @@ function Main({name , position , city}){
             <li>{position}</li>
             <li>{city}</li>
         </ul>
-             
         </div>
     );
 
