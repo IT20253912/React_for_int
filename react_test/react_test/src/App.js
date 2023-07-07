@@ -15,8 +15,14 @@ function App() {
   console.log(myData);
 
   return (
+    <div className="main_container">
     <div>
+      AUK learning center
+      <h1>chathudu</h1>
+    </div>
+    <div className="mainBlock_container">
       {Mainblock}
+    </div>
     </div>
   );
 }
