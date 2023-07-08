@@ -1,65 +1,118 @@
-import React, { useState } from "react";
-import "./App.css";
-import Main from "./Components/Main";
-import myData from "./Data/myData";
+import { useState } from "react";
+import './App.css';
 
-function App() {
-  const Mainblock = myData?.map(({ name, city, position, id }) => {
-    return <Main key={id} name={name} city={city} position={position} />;
-  });
+const App = () => {
+  const [imageurl, setimageurl] = useState("");
+  const [name, setname] = useState("");
+  const [city, setcity] = useState("");
+  const [position, setposition] = useState("");
 
-  const [myVar, setmyVar] = useState({
-    name: "nameOne",
-    city: "cityOne",
-    position: "positionOne",
-  });
+  const [mydata, setMydata] = useState([]);
 
-  const [input, setInput] = useState('');
-
-  const clickHandle = () => {
-    setmyVar((prevState) => ({
-      ...prevState,
-      name: "sahassara",
-    }));
-  };
-
-  console.log(input);
+  console.log(mydata);
 
   return (
     <div className="main_container">
-      <div>
-        AUK learning center
-        <h1>chathudu</h1>
-        <h2>{myVar.name}</h2>
-        <h2>{input}</h2>
+      <h1>chathudu</h1>
+      <div className="main_left">
+        <input
+          type="text"
+          value={imageurl}
+          onChange={(e) => {
+            e.preventDefault();
+            setimageurl(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={name}
+          onChange={(e) => {
+            e.preventDefault();
+            setname(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={city}
+          onChange={(e) => {
+            e.preventDefault();
+            setcity(e.target.value);
+          }}
+        />
+        <input
+          type="text"
+          value={position}
+          onChange={(e) => {
+            e.preventDefault();
+            setposition(e.target.value);
+          }}
+        />
+
+        <button
+          onClick={() => {
+            // console.log({
+            //   imageurl,
+            //   name,
+            //   city,
+            //   position,
+            // });
+
+            setMydata((premydata) => {
+              return [...premydata,{
+                image : imageurl,
+                name,
+                city,
+                position,
+              }]
+            })
+
+
+
+            // setimageurl("");
+            setimageurl((pre) => {
+              if (pre.length > 0) {
+                return "";
+              } else {
+                return pre;
+              }
+            });
+
+            setname((preName) => {
+              if (preName.length > 0) {
+                return "";
+              } else {
+                return preName;
+              }
+            });
+
+            setcity((preCity) => {
+              if (preCity.length > 0) {
+                return "";
+              } else {
+                return preCity;
+              }
+            });
+
+            setposition((prePosition) => {
+              if (prePosition.length > 0) {
+                return "";
+              } else {
+                return prePosition;
+              }
+            });
+
+            
+
+          }}
+        >
+          Submit
+        </button>
       </div>
-      <div className="mainBlock_container">{Mainblock}</div>
-      <br />
-      <br />
-      <button
-        style={{
-          fontSize: "12px",
-          border: "1px solid red",
-          padding: "7px 12px",
-        }}
-        onClick={clickHandle}
-      >
-        click me
-      </button>
-      <br />
-      <br />
-      <input
-        style={{
-          border: "1px solid red",
-          fontSize: "14px",
-          padding: "7px",
-        }}
-        type="text"
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-      />
+      <div className="main_right">
+
+      </div>
     </div>
   );
-}
+};
 
 export default App;
