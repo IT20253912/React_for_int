@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
+import '../App.css'
 
-const Unit = ({image, name,city , position}) => {
+const Unit = ({ image, name, city, position }) => {
   return (
-    <div>Unit</div>
-  )
-}
+    <div className="unit_container">
+      <img src={image} alt={name} />
+      <h3>{name}</h3>
+      <p>
+        <span>{city}</span>
+        <span>{position}</span>
+      </p>
+    </div>
+  );
+};
 
-export default Unit
+export default Unit;

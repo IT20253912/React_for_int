@@ -1,5 +1,6 @@
 import { useState } from "react";
 import './App.css';
+import Unit from "./Components/Unit";
 
 const App = () => {
   const [imageurl, setimageurl] = useState("");
@@ -9,11 +10,11 @@ const App = () => {
 
   const [mydata, setMydata] = useState([]);
 
-  console.log(mydata);
+  // console.log(mydata);
 
   return (
     <div className="main_container">
-      <h1>chathudu</h1>
+     
       <div className="main_left">
         <input
           type="text"
@@ -108,8 +109,17 @@ const App = () => {
           Submit
         </button>
       </div>
+      
       <div className="main_right">
-
+        {mydata?.map(({image,name,city,position},index) =>
+        < Unit
+        image={image}
+        name= {name} 
+        city ={city}
+        position={position}
+        key={index}
+        />
+        )} 
       </div>
     </div>
   );
