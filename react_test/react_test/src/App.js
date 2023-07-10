@@ -1,6 +1,7 @@
 import { useState } from "react";
 import './App.css';
 import Unit from "./Components/Unit";
+import Header from "./Components/Header";
 
 const App = () => {
   const [imageurl, setimageurl] = useState("");
@@ -13,6 +14,8 @@ const App = () => {
   // console.log(mydata);
 
   return (
+    <>
+    <Header />
     <div className="main_container">
      
       <div className="main_left">
@@ -122,6 +125,7 @@ const App = () => {
         )} 
       </div>
     </div>
+    </>
   );
 };
 
