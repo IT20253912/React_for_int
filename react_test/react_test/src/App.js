@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <>
-    <Header />
+    {/* <Header /> */}
     <div className="main_container">
      
       <div className="main_left">
