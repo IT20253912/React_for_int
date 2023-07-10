@@ -1,19 +1,93 @@
+.header_container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color:rgb(215, 178, 178) ;
+}
+
+.header_container nav {
+    position: relative;
+
+}
+
+.header_container nav ul {
+    position: absolute;
+    top: -39px;
+    right: -20px;
+    padding: 20px ;
+    height: 100vh;
+    background-color: rgb(222, 99, 99);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.header_container nav ul li {
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 400ms ease-in;   
+}
+
+.header_container nav ul li:hover {
+    color: red;
+}
+
+.header_container .header_menu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+
+
+}
+
+
 .main_container{
+    padding: 150px;
+    margin: 0 auto;
+    width: 90%;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    grid-template-rows: 1;
+}
+
+.main_container .main_left {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.mainBlock_container{
-    width: 90%;
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: auto;
     gap: 20px;
+    padding-right: 20px;
 }
 
-.mainBlock_container img {
+.main_container .main_left input {
+    width: 100%;
+    padding: 7px;
+}
+
+.main_container .main_right {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 17px;
+}
+
+.main_container .main_right .unit_container img {
     width: 100%;
     object-fit: contain;
+
+}
+
+.main_container .main_right .unit_container p {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
