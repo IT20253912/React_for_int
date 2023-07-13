@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import './App.css';
 import Unit from "./Components/Unit";
 import Header from "./Components/Header";
@@ -10,6 +10,10 @@ const App = () => {
   const [position, setposition] = useState("");
 
   const [mydata, setMydata] = useState([]);
+
+  useEffect(() =>{
+    console.log("useEffect calling...")
+  }, [name]);
 
   // console.log(mydata);
 
