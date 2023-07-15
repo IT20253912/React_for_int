@@ -30,7 +30,7 @@ const App = () => {
     }
 
     return () => {
-      console.log('clean up');
+      console.log('clean up function start');
       apicall();
     }
 
