@@ -15,7 +15,7 @@ const App = () => {
       console.log("useEffect is running");
 
       const apiCall = async () => {
-        console.log("api call function")
+        console.log("api call function");
         const res = await fetch(
           `https://jsonplaceholder.typicode.com/posts/${apiId}`
         );
@@ -26,12 +26,15 @@ const App = () => {
         }
       };
 
-      if(apiId.length > 0 && Number(apiId) > 0 && Number(apiId) <= 100) {
+      if (apiId.length > 0 && Number(apiId) > 0 && Number(apiId) <= 100) {
         console.log("Successfull if condition ");
         apiCall();
-
       }
 
+      return () => {
+        apiCall();
+        console.log("clean up function");
+      };
       // apiCall();
     }
   }, [apiId]);
