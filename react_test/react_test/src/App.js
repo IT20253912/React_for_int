@@ -6,6 +6,7 @@ import Header from "./Components/Header";
 const App = () => {
   const [apiId, setApiId] = useState("1");
   const [data, setData] = useState({});
+  const [search, setSearch] = useState(0);
 
   // console.log(apiId);
   // console.log(data);
@@ -37,7 +38,8 @@ const App = () => {
       };
       // apiCall();
     }
-  }, [apiId]);
+    // eslint-disable-next-line
+  }, [search]);
 
   return (
     <div>
@@ -47,6 +49,7 @@ const App = () => {
         onChange={(e) => setApiId(e.target.value)}
         placeholder="input number"
       />
+      <button onClick={()=>setSearch(pre=>pre===0?1:0)}>Search</button>
       {data && (
         <div>
           <h2>{data.title}</h2>
