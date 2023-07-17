@@ -31,6 +31,7 @@ const User = () => {
       <h1>User page </h1>
       {data?(
         <div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRvAR-8HE-tSNrccQaN0CI1LTNxglLCfB0C9DTeoA_DfHOUj8p9MY1qO1-2W1o_OVH5Bk&usqp=CAU" />
             <h1>{data.title}</h1>
             <h1>{data.body}</h1>
         </div>

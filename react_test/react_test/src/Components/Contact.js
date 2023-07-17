@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import styled from 'styled-components';
+
 const Contact = () => {
   const [mainData, setMainData] = useState([]);
 
@@ -18,20 +20,51 @@ const Contact = () => {
     datafetching();
   }, []);
 
+
   return (
-    <div>
+    <ContactContainer>
       <h1>Contact page</h1>
-      <div>
+      <ContactBlock>
         {mainData?.map(({ id, title }) => (
           <Link to={`/contact/${id}`} key={id}>
-            <div>
+            <ContactBlockUnit>
               <h3>{title}</h3>
-            </div>
+            </ContactBlockUnit>
           </Link>
         ))}
-      </div>
-    </div>
+      </ContactBlock>
+    </ContactContainer>
   );
 };
 
 export default Contact;
+
+const ContactContainer = styled.main`
+    background-color:yellow;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`;
+
+const ContactBlock = styled.div`
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: auto;
+    gap: 25px;
+`;
+
+const ContactBlockUnit = styled.div`
+    padding: 20px;
+    border-radius: 7px;
+    background-color: #FFB07F;
+    border: 2px solid #FFB07F;
+    transition: all 400ms ease-in;
+
+    &:hover{
+        background-color: inherit;
+    }
+
+`;
