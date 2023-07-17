@@ -1,5 +1,5 @@
 import React from 'react';
-import closeMenu from '../svg/close-square-svgrepo-com.svg'
+
 
 const Header = () => {
   return (
