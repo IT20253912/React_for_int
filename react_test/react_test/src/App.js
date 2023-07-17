@@ -1,131 +1,62 @@
-import { useState } from "react";
-import './App.css';
+import { useEffect, useState } from "react";
+import "./App.css";
 import Unit from "./Components/Unit";
 import Header from "./Components/Header";
 
 const App = () => {
-  const [imageurl, setimageurl] = useState("");
-  const [name, setname] = useState("");
-  const [city, setcity] = useState("");
-  const [position, setposition] = useState("");
+  const [apiId, setApiId] = useState("1");
+  const [data, setData] = useState({});
+  const [search, setSearch] = useState(0);
 
-  const [mydata, setMydata] = useState([]);
+  // console.log(apiId);
+  // console.log(data);
 
-  // console.log(mydata);
+  useEffect(() => {
+    if (apiId.length > 0) {
+      console.log("useEffect is running");
+
+      const apiCall = async () => {
+        console.log("api call function");
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${apiId}`
+        );
+        const data = await res.json();
+
+        if (data) {
+          setData(data);
+        }
+      };
+
+      if (apiId.length > 0 && Number(apiId) > 0 && Number(apiId) <= 100) {
+        console.log("Successfull if condition ");
+        apiCall();
+      }
+
+      return () => {
+        apiCall();
+        console.log("clean up function");
+      };
+      // apiCall();
+    }
+    // eslint-disable-next-line
+  }, [search]);
 
   return (
-    <>
-    <Header />
-    <div className="main_container">
-     
-      <div className="main_left">
-        <input
-          type="text"
-          value={imageurl}
-          onChange={(e) => {
-            e.preventDefault();
-            setimageurl(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => {
-            e.preventDefault();
-            setname(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => {
-            e.preventDefault();
-            setcity(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          value={position}
-          onChange={(e) => {
-            e.preventDefault();
-            setposition(e.target.value);
-          }}
-        />
-
-        <button
-          onClick={() => {
-            // console.log({
-            //   imageurl,
-            //   name,
-            //   city,
-            //   position,
-            // });
-
-            setMydata((premydata) => {
-              return [...premydata,{
-                image : imageurl,
-                name,
-                city,
-                position,
-              }]
-            })
-
-
-
-            // setimageurl("");
-            setimageurl((pre) => {
-              if (pre.length > 0) {
-                return "";
-              } else {
-                return pre;
-              }
-            });
-
-            setname((preName) => {
-              if (preName.length > 0) {
-                return "";
-              } else {
-                return preName;
-              }
-            });
-
-            setcity((preCity) => {
-              if (preCity.length > 0) {
-                return "";
-              } else {
-                return preCity;
-              }
-            });
-
-            setposition((prePosition) => {
-              if (prePosition.length > 0) {
-                return "";
-              } else {
-                return prePosition;
-              }
-            });
-
-            
-
-          }}
-        >
-          Submit
-        </button>
-      </div>
-      
-      <div className="main_right">
-        {mydata?.map(({image,name,city,position},index) =>
-        < Unit
-        image={image}
-        name= {name} 
-        city ={city}
-        position={position}
-        key={index}
-        />
-        )} 
-      </div>
+    <div>
+      <input
+        type="text"
+        value={apiId}
+        onChange={(e) => setApiId(e.target.value)}
+        placeholder="input number"
+      />
+      <button onClick={()=>setSearch(pre=>pre===0?1:0)}>Search</button>
+      {data && (
+        <div>
+          <h2>{data.title}</h2>
+          <p>{data.body}</p>
+        </div>
+      )}
     </div>
-    </>
   );
 };
 
