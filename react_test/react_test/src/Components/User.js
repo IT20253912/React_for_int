@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import Contact from "./Contact";
 
 const User = () => {
   const [data, setData] = useState({});
@@ -33,6 +35,7 @@ const User = () => {
             <h1>{data.body}</h1>
         </div>
       ):null}
+      <Link to="/contact">Back</Link>
     </div>
   );
 };
