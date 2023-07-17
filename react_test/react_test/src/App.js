@@ -5,8 +5,36 @@ import Header from "./Components/Header";
 
 const App = () => {
   const [apiId, setApiId] = useState("1");
+  const [data, setData] = useState({});
 
-  console.log(apiId);
+  // console.log(apiId);
+  // console.log(data);
+
+  useEffect(() => {
+    if (apiId.length > 0) {
+      console.log("useEffect is running");
+
+      const apiCall = async () => {
+        console.log("api call function")
+        const res = await fetch(
+          `https://jsonplaceholder.typicode.com/posts/${apiId}`
+        );
+        const data = await res.json();
+
+        if (data) {
+          setData(data);
+        }
+      };
+
+      if(apiId.length > 0 && Number(apiId) > 0 && Number(apiId) <= 100) {
+        console.log("Successfull if condition ");
+        apiCall();
+
+      }
+
+      // apiCall();
+    }
+  }, [apiId]);
 
   return (
     <div>
@@ -16,6 +44,12 @@ const App = () => {
         onChange={(e) => setApiId(e.target.value)}
         placeholder="input number"
       />
+      {data && (
+        <div>
+          <h2>{data.title}</h2>
+          <p>{data.body}</p>
+        </div>
+      )}
     </div>
   );
 };
